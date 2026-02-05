@@ -1,0 +1,104 @@
+
+{% extends "base_01.html" %}
+{% load tz %}
+
+{% block title %}Herbario – Gestión de Taxones, Especímenes y más{% endblock %}
+
+{% block content %}
+<section class="gradient-hero py-5">
+  <div class="container py-4">
+    <span class="badge badge-soft mb-3">Herbario • Plataforma de Colecciones</span>
+    <h1 class="hero-title mb-3">Gestiona Taxonomía, Especímenes, Eventos, Genética y Préstamos</h1>
+    <p class="hero-sub lead mb-4">
+      Una API robusta y una interfaz de administración para acelerar el registro, consulta y trazabilidad
+      de materiales biológicos. Desplegado con Docker y con arquitectura modular.
+    </p>
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="/api/" class="btn btn-brand btn-lg">Explorar API</a>
+      <a href="/admin/" class="btn btn-outline-light btn-lg">Entrar al Admin</a>
+    </div>
+  </div>
+</section>
+
+<section id="colecciones" class="py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-diagram-3 fs-3 me-2"></i>
+            <h5 class="mb-0">Taxonomía</h5>
+          </div>
+          <p class="text-secondary mb-3">Estructura jerárquica de taxones, con búsqueda, filtros y control de cambios.</p>
+          <a class="stretched-link" href="/api/taxa/">Ver endpoint</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-box-seam fs-3 me-2"></i>
+            <h5 class="mb-0">Especímenes</h5>
+          </div>
+          <p class="text-secondary mb-3">Inventario, metadatos, imágenes y trazabilidad de especímenes.</p>
+          <a class="stretched-link" href="/api/specimens/">Ver endpoint</a>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-calendar2-event fs-3 me-2"></i>
+            <h5 class="mb-0">Eventos y Préstamos</h5>
+          </div>
+          <p class="text-secondary mb-3">Colectas, préstamos, devoluciones y cumplimiento de políticas.</p>
+          <div class="d-flex gap-3">
+            <a href="/api/events/">Eventos</a>
+            <a href="/api/loans/">Préstamos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-activity fs-3 me-2"></i>
+            <h5 class="mb-0">Genética</h5>
+          </div>
+          <p class="text-secondary mb-3">Muestras y secuencias vinculadas a especímenes, con control de calidad.</p>
+          <div class="d-flex gap-3">
+            <a href="/api/genetics/samples/">Muestras</a>
+            <a href="/api/genetics/sequences/">Secuencias</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3">
+          <div class="d-flex align-items-center mb-2">
+            <i class="bi bi-people fs-3 me-2"></i>
+            <h5 class="mb-0">Usuarios</h5>
+          </div>
+          <p class="text-secondary mb-3">Gestión de cuentas y permisos.</p>
+          <a class="stretched-link" href="/api/users/">Ver endpoint</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="py-5">
+  <div class="container">
+    <div class="p-4 border rounded-3">
+      <h4 class="mb-2">Contacto</h4>
+      <p class="text-secondary">¿Tienes ideas o comentarios? Envíame un mensaje y seguimos iterando.</p>
+      <a href="mailto:contacto@herbario.local" class="btn btn-outline-light">Escríbeme</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<!-- Bootstrap Icons (opcional) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+{% endblock %}

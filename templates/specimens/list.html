@@ -1,0 +1,10 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h2>Especímenes</h2>
+<ul>
+  {% for s in specimens %}
+    <li>{{ s.code }} — {{ s.taxon.scientific_name }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

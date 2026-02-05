@@ -1,0 +1,67 @@
+# ========================
+# PYTHON / DJANGO
+# ========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Base de datos local (si existiera)
+db.sqlite3
+*.sqlite3
+
+# Logs
+*.log
+
+# Archivos/dirs generados por Django en producción
+# (Render servirá estáticos desde staticfiles; NO ignora tu carpeta 'static/' de código fuente)
+staticfiles/
+media/
+
+# ========================
+# ENTORNOS VIRTUALES
+# ========================
+venv/
+.venv/
+env/
+ENV/
+
+# ========================
+# CONFIG/SECRETS
+# ========================
+.env
+*.env
+
+# Mantén el plantilla: .env.example (NO lo ignores)
+
+# ========================
+# DOCKER
+# ========================
+# Archivos locales opcionales
+docker-compose.override.yml
+
+# ========================
+# EDITORES / IDEs
+# ========================
+# VS Code
+.vscode/
+
+# JetBrains / PyCharm
+.idea/
+*.iml
+
+# ========================
+# SISTEMA OPERATIVO
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# MISC
+# ========================
+*.tmp

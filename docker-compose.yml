@@ -1,0 +1,48 @@
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: herbario
+      POSTGRES_USER: edu
+      POSTGRES_PASSWORD: "123"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U edu -d herbario"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    # No es necesario exponer el puerto en desarrollo si solo accede 'web'
+    # ports:
+    #   - "5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    # Importante: usa '&&' normal, no HTML escapado
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DEBUG: "1"
+      SECRET_KEY: change-me
+      ALLOWED_HOSTS: "*"
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: herbario
+      DB_USER: edu
+      DB_PASSWORD: "123"
+    ports:
+      - "8000:8000"
+    #volumes:
+      # IMPORTANTE: requiere que E: esté compartida en Docker Desktop
+      #- //e/practicumII/03_implementacion/herbario:/app
+
+volumes:
+  pgdata:
