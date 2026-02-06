@@ -62,7 +62,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'herbario.wsgi.application'
-DATABASE_URL =postgresql://db_hutpl_user:s0hLJC4w1IeVi2X4H3iieWNi6AnIeJtG@dpg-d6353if5r7bs73dca4l0-a/db_hutpl
+
 DATABASES = {
     "default": dj_database_url.config(
         default=os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR/'db.sqlite3'}"),
@@ -102,6 +102,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 
