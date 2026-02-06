@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
+import dj_database_url
 
 load_dotenv()
 
@@ -61,17 +62,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'herbario.wsgi.application'
-
+DATABASE_URL =postgresql://db_hutpl_user:s0hLJC4w1IeVi2X4H3iieWNi6AnIeJtG@dpg-d6353if5r7bs73dca4l0-a/db_hutpl
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'herbario'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR/'db.sqlite3'}"),
+        conn_max_age=600,
+        ssl_require=not DEBUG  # En Render prod, True
+    )
 }
+
 
 LANGUAGE_CODE = 'es'
 TIME_ZONE = 'America/Guayaquil'
@@ -103,6 +102,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 
