@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.contrib.auth import views as auth_views
 
 from rest_framework.routers import DefaultRouter
 
@@ -33,6 +34,11 @@ urlpatterns = [
     path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/auth/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
+    path(
+        'accounts/login/',
+        auth_views.LoginView.as_view(template_name='registration/login.html'),
+        name='login'
+    ),
     path('admin/', admin.site.urls),
     #path('api/specimens/', include('apps.specimens.urls')),
     #path('api/taxa/', include('apps.taxonomy.urls')),
@@ -47,5 +53,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 
