@@ -6,6 +6,9 @@ echo "==> Esperando variables requeridas..."
 # Si usas DB en Render:
 # : "${DATABASE_URL:?DATABASE_URL no está definido}"
 
+echo "==> Verificando que no falten migraciones..."
+python manage.py makemigrations --check --dry-run
+
 echo "==> Ejecutando migraciones..."
 python manage.py migrate --noinput
 
